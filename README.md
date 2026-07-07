@@ -69,7 +69,6 @@ into the `uart_tx` and `uart_rx` modules:
 Below is the actual simulation waveform (extracted from `uart_tb.vcd`)
 showing the testbench sending byte `0xA5` through the loopback path:
 
-![UART waveform](docs/uart_waveform.svg)
 
 - `tx_start` pulses for one cycle to kick off transmission
 - `txd` (looped back to `rxd`) shows the serial frame: start bit (0) → 8 data bits → stop bit (1)
@@ -102,15 +101,6 @@ PASS[3]: sent=0x00  received=0x00  err=0
 PASS[4]: sent=0x55  received=0x55  err=0
 TEST SUMMARY: 5 passed, 0 failed (out of 5)
 ```
-
-## Simulating on EDA Playground
-
-1. Paste all files from `src/` into the **Design.v** pane.
-2. Paste `tb/uart_tb.v` into the **Testbench.v** pane.
-3. Select **Icarus Verilog** as the simulator.
-4. Check **"Open EPWave after run"**.
-5. Click **Run**, then add signals in EPWave from the `uart_tb` hierarchy and
-   click "Zoom Full" to view the waveforms.
 
 ## Using on Real Hardware
 
