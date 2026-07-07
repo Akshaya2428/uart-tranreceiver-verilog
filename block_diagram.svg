@@ -1,0 +1,90 @@
+<svg viewBox="0 0 820 480" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="820" height="480" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="410" y="28" font-size="18" font-weight="bold" text-anchor="middle" fill="#1a1a1a">UART Top-Level Block Diagram</text>
+
+  <!-- uart_top outer boundary -->
+  <rect x="40" y="55" width="740" height="380" rx="10" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="60" y="78" font-size="14" font-weight="bold" fill="#334155">uart_top</text>
+
+  <!-- clk/rst_n inputs -->
+  <text x="10" y="120" font-size="12" fill="#333">clk</text>
+  <line x1="30" y1="115" x2="80" y2="115" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="10" y="145" font-size="12" fill="#333">rst_n</text>
+  <line x1="30" y1="140" x2="80" y2="140" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- baud_gen (TX) box -->
+  <rect x="90" y="95" width="180" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="180" y="120" font-size="13" font-weight="bold" text-anchor="middle" fill="#075985">baud_gen</text>
+  <text x="180" y="138" font-size="11" text-anchor="middle" fill="#075985">OVERSAMPLE = 1</text>
+  <text x="180" y="153" font-size="10" text-anchor="middle" fill="#0369a1">(u_baud_tx)</text>
+
+  <!-- baud_gen (RX) box -->
+  <rect x="90" y="185" width="180" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="180" y="210" font-size="13" font-weight="bold" text-anchor="middle" fill="#075985">baud_gen</text>
+  <text x="180" y="228" font-size="11" text-anchor="middle" fill="#075985">OVERSAMPLE = 16</text>
+  <text x="180" y="243" font-size="10" text-anchor="middle" fill="#0369a1">(u_baud_rx)</text>
+
+  <!-- uart_tx box -->
+  <rect x="360" y="95" width="200" height="90" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="460" y="123" font-size="13" font-weight="bold" text-anchor="middle" fill="#92400e">uart_tx</text>
+  <text x="460" y="142" font-size="10" text-anchor="middle" fill="#92400e">tx_start, tx_data -&gt;</text>
+  <text x="460" y="157" font-size="10" text-anchor="middle" fill="#92400e">txd, tx_busy, tx_done</text>
+
+  <!-- uart_rx box -->
+  <rect x="360" y="215" width="200" height="90" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="460" y="243" font-size="13" font-weight="bold" text-anchor="middle" fill="#14532d">uart_rx</text>
+  <text x="460" y="262" font-size="10" text-anchor="middle" fill="#14532d">rxd -&gt;</text>
+  <text x="460" y="277" font-size="10" text-anchor="middle" fill="#14532d">rx_data, rx_dv, rx_err</text>
+
+  <!-- baud_tick_tx wire -->
+  <line x1="270" y1="130" x2="360" y2="130" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <text x="315" y="122" font-size="10" text-anchor="middle" fill="#0284c7">baud_tick_tx</text>
+
+  <!-- baud_tick_rx16 wire -->
+  <line x1="270" y1="220" x2="360" y2="220" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowblue)"/>
+  <text x="313" y="212" font-size="10" text-anchor="middle" fill="#0284c7">baud_tick_rx16</text>
+
+  <!-- external ports on left going into uart_tx/uart_rx -->
+  <text x="290" y="100" font-size="11" fill="#92400e">tx_start</text>
+  <line x1="285" y1="105" x2="360" y2="105" stroke="#92400e" stroke-width="1.5" marker-end="url(#arrowamber)"/>
+  <text x="290" y="303" font-size="11" fill="#14532d">rxd</text>
+  <line x1="285" y1="298" x2="360" y2="298" stroke="#14532d" stroke-width="1.5" marker-end="url(#arrowgreen)"/>
+
+  <!-- outputs from uart_tx -->
+  <line x1="560" y1="120" x2="640" y2="120" stroke="#92400e" stroke-width="1.5" marker-end="url(#arrowamber)"/>
+  <text x="600" y="112" font-size="10" text-anchor="middle" fill="#92400e">txd</text>
+
+  <line x1="560" y1="150" x2="640" y2="150" stroke="#92400e" stroke-width="1.5" marker-end="url(#arrowamber)"/>
+  <text x="600" y="167" font-size="10" text-anchor="middle" fill="#92400e">tx_busy / tx_done</text>
+
+  <!-- outputs from uart_rx -->
+  <line x1="560" y1="245" x2="640" y2="245" stroke="#14532d" stroke-width="1.5" marker-end="url(#arrowgreen)"/>
+  <text x="600" y="237" font-size="10" text-anchor="middle" fill="#14532d">rx_data</text>
+
+  <line x1="560" y1="275" x2="640" y2="275" stroke="#14532d" stroke-width="1.5" marker-end="url(#arrowgreen)"/>
+  <text x="600" y="292" font-size="10" text-anchor="middle" fill="#14532d">rx_dv / rx_err</text>
+
+  <!-- Legend -->
+  <rect x="90" y="345" width="620" height="70" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="105" y="365" font-size="11" fill="#334155" font-weight="bold">Data flow:</text>
+  <text x="105" y="382" font-size="11" fill="#334155">tx_data byte in &#8594; uart_tx serializes &#8594; txd (1 start + 8 data + 1 stop bits)</text>
+  <text x="105" y="399" font-size="11" fill="#334155">rxd serial in &#8594; uart_rx deserializes (16&#215; oversampled mid-bit sampling) &#8594; rx_data byte out</text>
+
+  <!-- arrow marker defs -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333"/>
+    </marker>
+    <marker id="arrowblue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrowamber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#92400e"/>
+    </marker>
+    <marker id="arrowgreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#14532d"/>
+    </marker>
+  </defs>
+</svg>

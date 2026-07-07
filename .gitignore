@@ -1,0 +1,16 @@
+# Simulation outputs
+*.vcd
+*.vvp
+uart_sim
+*.out
+
+# Icarus / Verilog compiled binaries
+a.out
+
+# Waveform viewer save files (optional to keep)
+*.gtkw
+
+# OS / editor junk
+.DS_Store
+*.swp
+*~
